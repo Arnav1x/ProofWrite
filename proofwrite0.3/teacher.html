@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProofWrite \u2014 Class Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/teacher.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a href="index.html" class="brand">
+    <span class="mark"></span>
+    ProofWrite
+    <span class="sub">Demo / v0.1</span>
+  </a>
+  <nav class="masthead-nav">
+    <a href="student.html">Student View</a>
+    <a href="teacher.html" class="active">Teacher View</a>
+  </nav>
+  <div class="masthead-meta">
+    Teacher: <strong>Ms. Carter</strong> &nbsp;\u00b7&nbsp; <strong>Grade 5</strong>
+  </div>
+</header>
+
+<main class="dashboard">
+
+  <div class="dashboard-header">
+    <div>
+      <div class="assignment-label">Assignment \u00b7 Submissions</div>
+      <h1 id="dashboard-title" class="dashboard-title">Loading\u2026</h1>
+      <div id="dashboard-meta" class="dashboard-meta"></div>
+    </div>
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-label">Submissions</div>
+        <div class="stat-value" id="stat-total">\u2014</div>
+      </div>
+      <div class="stat green">
+        <div class="stat-label">Clean</div>
+        <div class="stat-value" id="stat-green">\u2014</div>
+      </div>
+      <div class="stat yellow">
+        <div class="stat-label">Review</div>
+        <div class="stat-value" id="stat-yellow">\u2014</div>
+      </div>
+      <div class="stat red">
+        <div class="stat-label">Flagged</div>
+        <div class="stat-value" id="stat-red">\u2014</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="green">Clean</button>
+      <button class="filter-btn" data-filter="yellow">Review</button>
+      <button class="filter-btn" data-filter="red">Flagged</button>
+    </div>
+    <select class="sort-select" id="sort-select">
+      <option value="name">Sort: A\u2013Z</option>
+      <option value="flag">Sort: By Flag (Red First)</option>
+      <option value="words">Sort: Words (High \u2192 Low)</option>
+      <option value="time">Sort: Active Time (High \u2192 Low)</option>
+      <option value="wpm">Sort: WPM (High \u2192 Low)</option>
+    </select>
+  </div>
+
+  <div class="submissions">
+    <div class="submission-row header">
+      <div>Flag</div>
+      <div>Student</div>
+      <div>Words</div>
+      <div class="col-time">Active Time</div>
+      <div class="col-speed">Avg WPM</div>
+      <div class="col-pastes">P / T</div>
+      <div></div>
+    </div>
+    <div id="submissions-body"></div>
+  </div>
+
+</main>
+
+<script src="js/sample-data.js"></script>
+<script src="js/teacher.js"></script>
+</body>
+</html>
