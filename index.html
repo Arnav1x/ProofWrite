@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProofWrite — Version Index</title>
+
+  <!-- Match the fonts used by the actual app -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,800&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---- Tokens copied from shared.css so this page stays self-contained ---- */
+    :root {
+      --paper: #f5f1e8;
+      --paper-deep: #ebe4d3;
+      --ink: #1a1713;
+      --ink-soft: #3d362c;
+      --ink-muted: #7a6f60;
+      --rule: #c9bfa8;
+      --accent: #8b2c1a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    /* Same paper-grain atmosphere as the app */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(139,44,26,0.015) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(26,23,19,0.02) 0%, transparent 50%);
+      z-index: 0;
+    }
+
+    /* ---- Masthead, mirroring the shared one ---- */
+    .masthead {
+      border-bottom: 2px solid var(--ink);
+      padding: 18px 40px 16px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      background: var(--paper);
+      position: relative;
+      z-index: 2;
+    }
+    .brand {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand .mark {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    .brand .sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      margin-left: 4px;
+    }
+    .masthead-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--ink-muted);
+      text-align: right;
+    }
+    .masthead-meta strong { color: var(--ink); font-weight: 600; }
+
+    /* ---- Page body ---- */
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 56px 40px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--ink-muted);
+      margin-bottom: 14px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 44px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+
+    .lede {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: var(--ink-soft);
+      max-width: 60ch;
+      margin-bottom: 40px;
+    }
+
+    /* ---- Version cards ---- */
+    .versions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .version-card {
+      display: block;
+      text-decoration: none;
+      color: var(--ink);
+      background: var(--paper-deep);
+      border: 1px solid var(--ink);
+      padding: 24px;
+      transition: transform 120ms ease, background 120ms ease, box-shadow 120ms ease;
+      position: relative;
+    }
+    .version-card:hover {
+      background: var(--paper);
+      transform: translate(-2px, -2px);
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+
+    .card-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .card-version {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      font-size: 26px;
+      letter-spacing: -0.02em;
+    }
+    .card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+    }
+    .card-tag.latest { color: var(--accent); }
+
+    .card-path {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      margin-bottom: 8px;
+    }
+    .card-arrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      margin-top: 14px;
+    }
+    .version-card:hover .card-arrow { color: var(--accent); }
+
+    /* ---- Footer ---- */
+    footer {
+      margin-top: 56px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+    footer a { color: var(--ink-muted); text-decoration: none; border-bottom: 1px solid transparent; }
+    footer a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+    @media (max-width: 640px) {
+      .masthead { padding: 14px 20px; }
+      main { padding: 32px 20px 60px; }
+      h1 { font-size: 34px; }
+      .versions { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="masthead">
+    <a href="./" class="brand">
+      <span class="mark"></span>
+      ProofWrite
+      <span class="sub">/ index</span>
+    </a>
+    <div class="masthead-meta">
+      <strong>Version Select</strong><br>
+      Choose a build
+    </div>
+  </header>
+
+  <main>
+    <div class="eyebrow">Builds</div>
+    <h1>ProofWrite — Version Index</h1>
+    <p class="lede">Pick a build below.</p>
+
+    <div class="versions">
+      <a class="version-card" href="./proofwrite0.2/">
+        <div class="card-head">
+          <div class="card-version">0.2</div>
+          <div class="card-tag latest">● Latest</div>
+        </div>
+        <div class="card-path">/proofwrite0.2/</div>
+        <div class="card-arrow">Open →</div>
+      </a>
+
+      <a class="version-card" href="./proofwrite0.1/">
+        <div class="card-head">
+          <div class="card-version">0.1</div>
+          <div class="card-tag">Archived</div>
+        </div>
+        <div class="card-path">/proofwrite0.1/</div>
+        <div class="card-arrow">Open →</div>
+      </a>
+    </div>
+
+    <footer>
+      <span>ProofWrite — Dev Index</span>
+      <a href="https://github.com/Arnav1x/ProofWrite">github ↗</a>
+    </footer>
+  </main>
+
+</body>
+</html>
