@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProofWrite \u2014 Student Editor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/student.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a href="student.html" class="brand">
+    <span class="mark"></span>
+    ProofWrite
+    <span class="sub">Demo / v0.1</span>
+  </a>
+  <nav class="masthead-nav">
+    <a href="student.html" class="active">Student View</a>
+    <a href="teacher.html">Teacher View</a>
+  </nav>
+  <div class="masthead-meta">
+    Student: <strong>Jamie R.</strong> &nbsp;\u00b7&nbsp; Class: <strong>Grade 5 / Ms. Carter</strong>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="editor-col">
+    <div class="assignment-header">
+      <div class="assignment-label">Assignment \u00b7 Due Fri, May 2</div>
+      <h1 class="assignment-title">Book Report: <em>Bridge to Terabithia</em></h1>
+      <div class="assignment-meta">Expected length: 250\u2013400 words \u00b7 Independent work</div>
+      <div class="assignment-prompt">
+        Describe the friendship between Jess and Leslie. What did they learn from each other? Use examples from the story to support your answer.
+      </div>
+    </div>
+
+    <div id="editor" class="editor" contenteditable="true" spellcheck="true" autocomplete="off"></div>
+
+    <div class="editor-footer">
+      <div><span id="word-count">0</span> words \u00b7 <span id="char-count">0</span> characters</div>
+      <button class="btn" id="submit-btn">Submit Assignment</button>
+    </div>
+  </section>
+
+  <aside class="sidebar">
+    <div>
+      <div class="side-section-title">Integrity Status</div>
+      <div class="flag-display">
+        <div id="flag-dot" class="flag-dot"></div>
+        <div>
+          <div id="flag-label" class="flag-label">Green</div>
+          <div id="flag-desc" class="flag-desc">Nothing unusual detected.</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="side-section-title">Session Metrics</div>
+      <div class="metrics">
+        <div class="metric">
+          <div class="metric-value" id="m-active">0:00</div>
+          <div class="metric-label">Active Time</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="m-wpm">0</div>
+          <div class="metric-label">Avg WPM</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="m-blurs">0</div>
+          <div class="metric-label">Tab Switches</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value" id="m-pastes">0</div>
+          <div class="metric-label">Pastes</div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="side-section-title">Teacher Controls</div>
+      <div class="toggle-row">
+        <label for="t-paste">Block copy/paste</label>
+        <div class="toggle on" id="t-paste" data-setting="blockPaste"></div>
+      </div>
+      <div class="toggle-row">
+        <label for="t-tabs">Flag tab-switching</label>
+        <div class="toggle on" id="t-tabs" data-setting="flagTabs"></div>
+      </div>
+      <div class="toggle-row">
+        <label for="t-burst">Flag large insertions</label>
+        <div class="toggle on" id="t-burst" data-setting="flagBurst"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="side-section-title">Event Log</div>
+      <div class="log" id="log">
+        <div class="log-empty">No events yet. Begin typing\u2026</div>
+      </div>
+    </div>
+
+    <button class="btn btn-ghost" id="review-btn">\u25b6  Replay Writing Session</button>
+  </aside>
+</main>
+
+<!-- Replay modal -->
+<div class="modal-backdrop" id="modal" style="position:fixed;inset:0;background:rgba(26,23,19,0.75);display:none;align-items:center;justify-content:center;z-index:100;padding:40px;">
+  <style>
+    .modal-backdrop.open { display: flex !important; }
+    .modal-inner {
+      background: var(--paper);
+      width: 100%;
+      max-width: 820px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid var(--ink);
+    }
+    .modal-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 20px 28px 16px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .modal-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      font-size: 24px;
+      letter-spacing: -0.01em;
+    }
+    .modal-title .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-right: 10px;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--ink-muted);
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--ink); }
+    .modal-stage {
+      padding: 28px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .modal-replay-text {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      min-height: 200px;
+      color: var(--ink);
+    }
+    .modal-replay-text .replay-caret {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--accent);
+      vertical-align: text-bottom;
+      animation: blink 1s steps(2) infinite;
+    }
+    .modal-replay-text .paste-mark {
+      background: var(--highlight);
+      padding: 1px 3px;
+      border-bottom: 2px solid var(--yellow);
+    }
+    .modal-controls {
+      padding: 16px 28px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--paper-deep);
+    }
+    .modal-controls button.replay-btn {
+      background: var(--ink);
+      color: var(--paper);
+      border: none;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .modal-controls button.replay-btn:hover { background: var(--accent); }
+    .modal-controls .replay-progress {
+      flex: 1;
+      height: 4px;
+      background: var(--rule);
+      position: relative;
+      cursor: pointer;
+    }
+    .modal-controls .replay-progress-fill {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+    }
+    .modal-controls .replay-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      min-width: 90px;
+      text-align: right;
+    }
+    .modal-controls .speed-select {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+  </style>
+  <div class="modal-inner">
+    <div class="modal-header-bar">
+      <div class="modal-title">
+        <span class="tag">Teacher View</span>
+        Writing Session Replay
+      </div>
+      <button class="modal-close" id="modal-close">\u00d7</button>
+    </div>
+    <div class="modal-stage">
+      <div id="replay-text" class="modal-replay-text"></div>
+    </div>
+    <div class="modal-controls">
+      <button class="replay-btn" id="replay-play">\u25b6</button>
+      <div class="replay-progress" id="replay-progress">
+        <div class="replay-progress-fill" id="replay-fill"></div>
+      </div>
+      <span class="replay-time" id="replay-time">0:00 / 0:00</span>
+      <select class="speed-select" id="replay-speed">
+        <option value="0.5">0.5\u00d7</option>
+        <option value="1" selected>1\u00d7</option>
+        <option value="2">2\u00d7</option>
+        <option value="4">4\u00d7</option>
+        <option value="8">8\u00d7</option>
+        <option value="16">16\u00d7</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<script src="js/student.js"></script>
+</body>
+</html>
