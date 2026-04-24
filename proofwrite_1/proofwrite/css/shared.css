@@ -1,0 +1,246 @@
+/* =========================================================
+   ProofWrite — shared stylesheet
+   Loaded on every page. Defines design tokens, base
+   typography, and the masthead/layout primitives.
+   ========================================================= */
+
+:root {
+  --paper: #f5f1e8;
+  --paper-deep: #ebe4d3;
+  --paper-deeper: #ded2b8;
+  --ink: #1a1713;
+  --ink-soft: #3d362c;
+  --ink-muted: #7a6f60;
+  --rule: #c9bfa8;
+  --accent: #8b2c1a;        /* deep brick red — editorial */
+  --accent-soft: #b85c42;
+  --green: #3f6b3a;
+  --green-soft: #d4e0cf;
+  --yellow: #b8831a;
+  --yellow-soft: #f0e3bf;
+  --red: #a53020;
+  --red-soft: #e8c9c2;
+  --highlight: #fff4b8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Subtle paper-grain atmosphere */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(139,44,26,0.015) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(26,23,19,0.02) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* ===== MASTHEAD (shared across all pages) ===== */
+
+.masthead {
+  border-bottom: 2px solid var(--ink);
+  padding: 18px 40px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  background: var(--paper);
+  position: relative;
+  z-index: 2;
+}
+
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.brand .mark {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  transform: translateY(-2px);
+}
+.brand .sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+  margin-left: 4px;
+}
+
+.masthead-nav {
+  display: flex;
+  gap: 24px;
+  align-items: baseline;
+}
+.masthead-nav a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: all 120ms ease;
+}
+.masthead-nav a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+.masthead-nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+.masthead-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  text-align: right;
+}
+.masthead-meta strong { color: var(--ink); font-weight: 600; }
+
+/* ===== SHARED PILL / FLAG STYLES ===== */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  border: 1px solid;
+}
+.pill::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.pill.green { color: var(--green); background: var(--green-soft); border-color: var(--green); }
+.pill.yellow { color: var(--yellow); background: var(--yellow-soft); border-color: var(--yellow); }
+.pill.red { color: var(--red); background: var(--red-soft); border-color: var(--red); }
+
+/* ===== SHARED BUTTONS ===== */
+
+.btn {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 12px 28px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: background 120ms ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover { background: var(--accent); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+/* ===== SHARED SECTION TITLES ===== */
+
+.side-section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ===== SPEED SLIDER ===== */
+/* Styling range inputs requires vendor-prefixed pseudo-elements
+   (::-webkit-slider-thumb for Chrome/Safari, ::-moz-range-thumb
+   for Firefox). There's no unified CSS API for this — it's the
+   classic cross-browser pain point for range inputs. */
+
+.speed-slider-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 180px;
+}
+
+.speed-slider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+}
+
+.speed-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 3px;
+  background: var(--rule);
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+.speed-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: var(--ink);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--ink);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.speed-slider::-webkit-slider-thumb:hover { background: var(--accent); }
+.speed-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  background: var(--ink);
+  border: 2px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--ink);
+  cursor: pointer;
+  transition: background 120ms ease;
+}
+.speed-slider::-moz-range-thumb:hover { background: var(--accent); }
+
+.speed-readout {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink);
+  min-width: 38px;
+  text-align: right;
+}

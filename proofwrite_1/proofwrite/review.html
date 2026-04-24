@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProofWrite \u2014 Review Submission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/teacher.css">
+</head>
+<body>
+
+<header class="masthead">
+  <a href="student.html" class="brand">
+    <span class="mark"></span>
+    ProofWrite
+    <span class="sub">Demo / v0.1</span>
+  </a>
+  <nav class="masthead-nav">
+    <a href="student.html">Student View</a>
+    <a href="teacher.html" class="active">Teacher View</a>
+  </nav>
+  <div class="masthead-meta">
+    Teacher: <strong>Ms. Carter</strong> &nbsp;\u00b7&nbsp; <strong>Grade 5</strong>
+  </div>
+</header>
+
+<main class="review-page">
+
+  <a href="teacher.html" class="back-link">\u2190 Back to Class Dashboard</a>
+
+  <div class="review-header">
+    <div>
+      <h1 id="review-student-name" class="review-student">Loading\u2026</h1>
+      <div id="review-assignment" class="review-assignment"></div>
+      <div id="review-submitted" class="review-submitted"></div>
+    </div>
+  </div>
+
+  <div id="flag-banner" class="flag-banner">
+    <div class="flag-banner-dot"></div>
+    <div>
+      <div id="flag-banner-title" class="flag-banner-title"></div>
+      <div id="flag-banner-reasons" class="flag-banner-reasons"></div>
+    </div>
+  </div>
+
+  <div class="review-grid">
+
+    <div class="replay-panel">
+      <div class="replay-panel-header">
+        <span>Writing Session Replay</span>
+        <span>Scrub or play to inspect typing pattern</span>
+      </div>
+      <div class="replay-stage">
+        <div id="replay-text" class="replay-text"></div>
+      </div>
+      <div class="replay-controls">
+        <button class="replay-btn" id="replay-play">\u25b6</button>
+        <div class="replay-progress" id="replay-progress">
+          <div class="replay-progress-fill" id="replay-fill"></div>
+        </div>
+        <span class="replay-time" id="replay-time">0:00 / 0:00</span>
+        <div class="speed-slider-group">
+          <span class="speed-slider-label">Speed</span>
+          <input
+            type="range"
+            class="speed-slider"
+            id="replay-speed"
+            min="0"
+            max="100"
+            value="50"
+            step="1"
+          />
+          <span class="speed-readout" id="replay-speed-readout">1\u00d7</span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="review-sidebar">
+      <div>
+        <div class="side-section-title">Session Metrics</div>
+        <div id="review-metrics" class="review-metrics"></div>
+      </div>
+
+      <div>
+        <div class="side-section-title">Event Log</div>
+        <div id="event-log" class="event-log"></div>
+      </div>
+
+      <div class="decision-box">
+        <div class="decision-title">Teacher Decision</div>
+        <div class="decision-desc">
+          This submission is flagged, not judged. Use the replay and event log to decide how to proceed.
+        </div>
+        <div class="decision-buttons">
+          <button class="decision-btn" data-action="accept">Accept as Authentic</button>
+          <button class="decision-btn primary" data-action="flag">Flag for Discussion</button>
+          <button class="decision-btn" data-action="note">Add Note</button>
+          <button class="decision-btn" data-action="dismiss">Dismiss</button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+</main>
+
+<script src="js/sample-data.js"></script>
+<script src="js/review.js"></script>
+</body>
+</html>
