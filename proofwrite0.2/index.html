@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProofWrite \u2014 Pro Honesty, Anti-AI Homework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  /* ===== Home page layout ===== */
+  /* Page-specific styles live in <style> here rather than a
+     separate home.css because this page is small enough that
+     the added complexity of a new file isn't worth it. If this
+     grows, the classic move is to extract it into css/home.css. */
+
+  .home {
+    position: relative;
+    z-index: 1;
+    min-height: calc(100vh - 73px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 60px 40px;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 24px;
+    max-width: 900px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-lede {
+    font-family: 'Fraunces', serif;
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin-bottom: 56px;
+    font-style: italic;
+  }
+
+  /* ===== Big demo buttons ===== */
+  /* Two large cards side-by-side on desktop, stacked on mobile.
+     CSS Grid with a two-column template is the classic way to
+     build equal-width side-by-side cards that stack responsively. */
+
+  .demo-choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .demo-card {
+    display: block;
+    text-decoration: none;
+    color: var(--ink);
+    padding: 36px 34px 30px;
+    border: 2px solid var(--ink);
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  }
+  .demo-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--ink);
+    background: var(--paper);
+  }
+  .demo-card:active {
+    transform: translate(0, 0);
+    box-shadow: 0 0 0 var(--ink);
+  }
+
+  .demo-card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    margin-bottom: 14px;
+  }
+
+  .demo-card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .demo-card-desc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    min-height: 68px;
+  }
+
+  .demo-card-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .demo-card-cta .arrow {
+    transition: transform 180ms ease;
+  }
+  .demo-card:hover .demo-card-cta .arrow {
+    transform: translateX(6px);
+  }
+
+  /* Subtle accent on the student card vs teacher card so they
+     feel distinct without competing */
+  .demo-card.student {
+    background: var(--paper);
+  }
+  .demo-card.teacher {
+    background: var(--paper-deep);
+  }
+
+  /* ===== Context strip below the buttons ===== */
+  /* Three-column "what/who/why" grid. This is a very common
+     pattern on product home pages — a short three-up block
+     below the hero. Kept deliberately plain so it does not
+     compete with the two primary buttons above. */
+
+  .context-strip {
+    border-top: 1px solid var(--rule);
+    padding: 40px 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .context-item-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .context-item-body {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* ===== Footer ===== */
+
+  .home-footer {
+    padding: 24px 60px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 800px) {
+    .hero { padding: 48px 28px 28px; }
+    .hero-title { font-size: 42px; }
+    .hero-lede { font-size: 17px; margin-bottom: 36px; }
+    .demo-choices { grid-template-columns: 1fr; gap: 16px; }
+    .demo-card { padding: 28px 24px 24px; }
+    .demo-card-title { font-size: 30px; }
+    .demo-card-desc { min-height: 0; }
+    .context-strip { grid-template-columns: 1fr; gap: 24px; padding: 32px 0 16px; }
+    .home-footer { padding: 20px 28px; flex-direction: column; gap: 8px; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="index.html" class="brand">
+    <span class="mark"></span>
+    ProofWrite
+    <span class="sub">Demo / v0.1</span>
+  </a>
+  <nav class="masthead-nav">
+    <a href="student.html">Student View</a>
+    <a href="teacher.html">Teacher View</a>
+  </nav>
+  <div class="masthead-meta">
+    Pilot Release &nbsp;\u00b7&nbsp; <strong>K\u20135 Schools</strong>
+  </div>
+</header>
+
+<main class="home">
+
+  <section class="hero">
+    <div class="eyebrow">Pro-Honesty, Anti-AI Homework</div>
+    <h1 class="hero-title">
+      Homework that teaches children <em>how</em> to think, not how to prompt.
+    </h1>
+    <p class="hero-lede">
+      ProofWrite is a writing platform for K\u20135 classrooms that records every keystroke as a student works, so teachers can verify authentic effort without guessing at AI-detector percentages.
+    </p>
+
+    <div class="demo-choices">
+
+      <a class="demo-card student" href="student.html">
+        <div class="demo-card-tag">Demo \u00b7 Writing Experience</div>
+        <div class="demo-card-title">Student Demo</div>
+        <div class="demo-card-desc">
+          Step into a fifth-grader's seat. Write a book report, feel the guardrails, and watch your own writing session get recorded in real time.
+        </div>
+        <div class="demo-card-cta">
+          Enter Student View <span class="arrow">\u2192</span>
+        </div>
+      </a>
+
+      <a class="demo-card teacher" href="teacher.html">
+        <div class="demo-card-tag">Demo \u00b7 Classroom Review</div>
+        <div class="demo-card-title">Teacher Demo</div>
+        <div class="demo-card-desc">
+          See the dashboard a teacher sees the morning after an assignment is due \u2014 twelve submissions, green/yellow/red flags, and the replay that tells the real story.
+        </div>
+        <div class="demo-card-cta">
+          Enter Teacher View <span class="arrow">\u2192</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="context-strip">
+      <div>
+        <div class="context-item-label">What it is</div>
+        <div class="context-item-body">
+          A writing platform with assignment posting, typing-pattern analysis, and per-submission replay, all in one place.
+        </div>
+      </div>
+      <div>
+        <div class="context-item-label">Who it's for</div>
+        <div class="context-item-body">
+          Elementary schools and their teachers \u2014 the age where critical-thinking habits are still being formed, and where AI use is most distorting.
+        </div>
+      </div>
+      <div>
+        <div class="context-item-label">Why now</div>
+        <div class="context-item-body">
+          A generation is growing up assuming every problem gets outsourced to a chatbot. Good tools can protect the developmental work that classrooms are meant to do.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="home-footer">
+    <span>ProofWrite \u00b7 Built at UMD</span>
+    <span>Pilot program inquiries welcome</span>
+  </footer>
+</main>
+
+</body>
+</html>
