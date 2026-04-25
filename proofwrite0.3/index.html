@@ -3,18 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ProofWrite &mdash; Pro Honesty, Anti-AI Homework</title>
+<title>ProofWrite</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/shared.css">
 <style>
-  /* ===== Home page layout ===== */
-  /* Page-specific styles live in <style> here rather than a
-     separate home.css because this page is small enough that
-     the added complexity of a new file isn't worth it. If this
-     grows, the classic move is to extract it into css/home.css. */
-
   .home {
     position: relative;
     z-index: 1;
@@ -66,11 +60,6 @@
     margin-bottom: 56px;
     font-style: italic;
   }
-
-  /* ===== Big demo buttons ===== */
-  /* Two large cards side-by-side on desktop, stacked on mobile.
-     CSS Grid with a two-column template is the classic way to
-     build equal-width side-by-side cards that stack responsively. */
 
   .demo-choices {
     display: grid;
@@ -144,16 +133,8 @@
     transform: translateX(6px);
   }
 
-  /* Subtle accent on the student card vs teacher card so they
-     feel distinct without competing */
-  .demo-card.student {
-    background: var(--paper);
-  }
-  .demo-card.teacher {
-    background: var(--paper-deep);
-  }
-
-  /* ===== Context strip below the buttons ===== */
+  .demo-card.student { background: var(--paper); }
+  .demo-card.teacher { background: var(--paper-deep); }
 
   .context-strip {
     border-top: 1px solid var(--rule);
@@ -178,8 +159,6 @@
     color: var(--ink-soft);
   }
 
-  /* ===== Footer ===== */
-
   .home-footer {
     padding: 24px 60px;
     border-top: 1px solid var(--rule);
@@ -193,7 +172,6 @@
     align-items: center;
   }
 
-  /* ===== Responsive ===== */
   @media (max-width: 800px) {
     .hero { padding: 48px 28px 28px; }
     .hero-title { font-size: 42px; }
@@ -227,12 +205,12 @@
 <main class="home">
 
   <section class="hero">
-    <div class="eyebrow">Pro-Honesty, Anti-AI Homework</div>
+    <div class="eyebrow">Short tagline here.</div>
     <h1 class="hero-title">
-      Homework that teaches children <em>how</em> to think, not how to prompt.
+      ProofWrite demo
     </h1>
     <p class="hero-lede">
-      ProofWrite is a writing platform for K&ndash;5 classrooms that records every keystroke as a student works, so teachers can verify authentic effort without guessing at AI-detector percentages.
+      One-line description of what ProofWrite is.
     </p>
 
     <div class="demo-choices">
@@ -241,7 +219,7 @@
         <div class="demo-card-tag">Demo &middot; Writing Experience</div>
         <div class="demo-card-title">Student Demo</div>
         <div class="demo-card-desc">
-          Step into a fifth-grader's seat. Write a book report, feel the guardrails, and watch your own writing session get recorded in real time.
+          See the Student's View.
         </div>
         <div class="demo-card-cta">
           Enter Student View <span class="arrow">&rarr;</span>
@@ -252,7 +230,7 @@
         <div class="demo-card-tag">Demo &middot; Classroom Review</div>
         <div class="demo-card-title">Teacher Demo</div>
         <div class="demo-card-desc">
-          See the dashboard a teacher sees the morning after an assignment is due &mdash; twelve submissions, green/yellow/red flags, and the replay that tells the real story.
+          See the Teacher's Dashboard.
         </div>
         <div class="demo-card-cta">
           Enter Teacher View <span class="arrow">&rarr;</span>
@@ -265,27 +243,27 @@
       <div>
         <div class="context-item-label">What it is</div>
         <div class="context-item-body">
-          A writing platform with assignment posting, typing-pattern analysis, and per-submission replay, all in one place.
+          Short sentence about what it is.
         </div>
       </div>
       <div>
         <div class="context-item-label">Who it's for</div>
         <div class="context-item-body">
-          Elementary schools and their teachers &mdash; the age where critical-thinking habits are still being formed, and where AI use is most distorting.
+          Short sentence about who it's for.
         </div>
       </div>
       <div>
         <div class="context-item-label">Why now</div>
         <div class="context-item-body">
-          A generation is growing up assuming every problem gets outsourced to a chatbot. Good tools can protect the developmental work that classrooms are meant to do.
+          Short sentence about why now.
         </div>
       </div>
     </div>
   </section>
 
   <footer class="home-footer">
-    <span>ProofWrite &middot; Built at UMD</span>
-    <span>Pilot program inquiries welcome</span>
+    <span>Footer left.</span>
+    <span>Footer right.</span>
   </footer>
 </main>
 
