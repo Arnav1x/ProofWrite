@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ProofWrite \u2014 Student Editor</title>
+<title>ProofWrite &mdash; Student Editor</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
@@ -13,26 +13,26 @@
 <body>
 
 <header class="masthead">
-  <a href="index.html" class="brand">
+  <a href="student.html" class="brand">
     <span class="mark"></span>
     ProofWrite
-    <span class="sub">Demo / v0.1</span>
+    <span class="sub">Demo / v0.2</span>
   </a>
   <nav class="masthead-nav">
     <a href="student.html" class="active">Student View</a>
     <a href="teacher.html">Teacher View</a>
   </nav>
   <div class="masthead-meta">
-    Student: <strong>Jamie R.</strong> &nbsp;\u00b7&nbsp; Class: <strong>Grade 5 / Ms. Carter</strong>
+    Student: <strong>Jamie R.</strong> &nbsp;&middot;&nbsp; Class: <strong>Grade 5 / Ms. Carter</strong>
   </div>
 </header>
 
 <main class="workspace">
   <section class="editor-col">
     <div class="assignment-header">
-      <div class="assignment-label">Assignment \u00b7 Due Fri, May 2</div>
+      <div class="assignment-label">Assignment &middot; Due Fri, May 2</div>
       <h1 class="assignment-title">Book Report: <em>Bridge to Terabithia</em></h1>
-      <div class="assignment-meta">Expected length: 250\u2013400 words \u00b7 Independent work</div>
+      <div class="assignment-meta">Expected length: 250&ndash;400 words &middot; Independent work</div>
       <div class="assignment-prompt">
         Describe the friendship between Jess and Leslie. What did they learn from each other? Use examples from the story to support your answer.
       </div>
@@ -41,7 +41,7 @@
     <div id="editor" class="editor" contenteditable="true" spellcheck="true" autocomplete="off"></div>
 
     <div class="editor-footer">
-      <div><span id="word-count">0</span> words \u00b7 <span id="char-count">0</span> characters</div>
+      <div><span id="word-count">0</span> words &middot; <span id="char-count">0</span> characters</div>
       <button class="btn" id="submit-btn">Submit Assignment</button>
     </div>
   </section>
@@ -99,11 +99,11 @@
     <div>
       <div class="side-section-title">Event Log</div>
       <div class="log" id="log">
-        <div class="log-empty">No events yet. Begin typing\u2026</div>
+        <div class="log-empty">No events yet. Begin typing&hellip;</div>
       </div>
     </div>
 
-    <button class="btn btn-ghost" id="review-btn">\u25b6  Replay Writing Session</button>
+    <button class="btn btn-ghost" id="review-btn">&#9654;  Replay Writing Session</button>
   </aside>
 </main>
 
@@ -215,14 +215,6 @@
       min-width: 90px;
       text-align: right;
     }
-    .modal-controls .speed-select {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      background: var(--paper);
-      border: 1px solid var(--rule);
-      padding: 6px 10px;
-      cursor: pointer;
-    }
   </style>
   <div class="modal-inner">
     <div class="modal-header-bar">
@@ -230,13 +222,13 @@
         <span class="tag">Teacher View</span>
         Writing Session Replay
       </div>
-      <button class="modal-close" id="modal-close">\u00d7</button>
+      <button class="modal-close" id="modal-close">&times;</button>
     </div>
     <div class="modal-stage">
       <div id="replay-text" class="modal-replay-text"></div>
     </div>
     <div class="modal-controls">
-      <button class="replay-btn" id="replay-play">\u25b6</button>
+      <button class="replay-btn" id="replay-play">&#9654;</button>
       <div class="replay-progress" id="replay-progress">
         <div class="replay-progress-fill" id="replay-fill"></div>
       </div>
@@ -252,7 +244,7 @@
           value="50"
           step="1"
         />
-        <span class="speed-readout" id="replay-speed-readout">1\u00d7</span>
+        <span class="speed-readout" id="replay-speed-readout">1&times;</span>
       </div>
     </div>
   </div>
