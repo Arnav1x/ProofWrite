@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProofWrite — Version Index</title>
+  <title>ProofWrite &mdash; Version Index</title>
 
   <!-- Match the fonts used by the actual app -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -131,10 +131,14 @@
       margin-bottom: 40px;
     }
 
-    /* ---- Version cards ---- */
+    /* ---- Version cards ----
+       Using auto-fit + minmax is the classic responsive-grid pattern:
+       columns auto-arrange (3 on desktop, 2 on tablet, 1 on phone)
+       without writing any media queries. Each card never goes
+       narrower than 220px before wrapping. */
     .versions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
@@ -214,7 +218,6 @@
       .masthead { padding: 14px 20px; }
       main { padding: 32px 20px 60px; }
       h1 { font-size: 34px; }
-      .versions { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -234,17 +237,26 @@
 
   <main>
     <div class="eyebrow">Builds</div>
-    <h1>ProofWrite — Version Index</h1>
+    <h1>ProofWrite &mdash; Version Index</h1>
     <p class="lede">Pick a build below.</p>
 
     <div class="versions">
+      <a class="version-card" href="./proofwrite0.3/">
+        <div class="card-head">
+          <div class="card-version">0.3</div>
+          <div class="card-tag latest">&#9679; Latest</div>
+        </div>
+        <div class="card-path">/proofwrite0.3/</div>
+        <div class="card-arrow">Open &rarr;</div>
+      </a>
+
       <a class="version-card" href="./proofwrite0.2/">
         <div class="card-head">
           <div class="card-version">0.2</div>
-          <div class="card-tag latest">● Latest</div>
+          <div class="card-tag">Archived</div>
         </div>
         <div class="card-path">/proofwrite0.2/</div>
-        <div class="card-arrow">Open →</div>
+        <div class="card-arrow">Open &rarr;</div>
       </a>
 
       <a class="version-card" href="./proofwrite0.1/">
@@ -253,13 +265,13 @@
           <div class="card-tag">Archived</div>
         </div>
         <div class="card-path">/proofwrite0.1/</div>
-        <div class="card-arrow">Open →</div>
+        <div class="card-arrow">Open &rarr;</div>
       </a>
     </div>
 
     <footer>
-      <span>ProofWrite — Dev Index</span>
-      <a href="https://github.com/Arnav1x/ProofWrite">github ↗</a>
+      <span>ProofWrite &mdash; Dev Index</span>
+      <a href="https://github.com/Arnav1x/ProofWrite">github &#8599;</a>
     </footer>
   </main>
 
