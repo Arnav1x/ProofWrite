@@ -67,7 +67,7 @@ const SUBMISSIONS = [
   {
     id: 1,
     name: "Amelia Brooks",
-    email: "abrooks@wilsonwims.edu",
+    email: "abrooks@mcpsmd.net",
     flag: "green",
     reasons: [],
     wordCount: 312,
@@ -96,7 +96,7 @@ I think the friendship between Jess and Leslie shows that the best friends help 
   {
     id: 2,
     name: "Benjamin Chen",
-    email: "bchen@wilsonwims.edu",
+    email: "bchen@mcpsmd.net",
     flag: "green",
     reasons: [],
     wordCount: 268,
@@ -125,7 +125,7 @@ Then something really sad happens. Leslie dies when she falls into the creek. Je
   {
     id: 3,
     name: "Chloe Davidson",
-    email: "cdavidson@wilsonwims.edu",
+    email: "cdavidson@mcpsmd.net",
     flag: "green",
     reasons: [],
     wordCount: 345,
@@ -155,7 +155,7 @@ When Leslie dies trying to cross the creek to Terabithia alone, Jess is heartbro
   {
     id: 4,
     name: "Derek Esposito",
-    email: "desposito@wilsonwims.edu",
+    email: "desposito@mcpsmd.net",
     flag: "yellow",
     reasons: ["Left the page 4 times during writing.", "Pasted 1 short quote."],
     wordCount: 289,
@@ -191,7 +191,7 @@ This book made me think about how a friend can change your life even in a short 
   {
     id: 5,
     name: "Elena Fontaine",
-    email: "efontaine@wilsonwims.edu",
+    email: "efontaine@mcpsmd.net",
     flag: "green",
     reasons: [],
     wordCount: 295,
@@ -220,7 +220,7 @@ When Leslie dies it feels like a punch. But I think the book is showing us that 
   {
     id: 6,
     name: "Felix Garrison",
-    email: "fgarrison@wilsonwims.edu",
+    email: "fgarrison@mcpsmd.net",
     flag: "red",
     reasons: [
       "Wrote the entire essay as a single 284-word paste.",
@@ -254,7 +254,7 @@ The tragic death of Leslie represents not an ending but a transformation. Jess i
   {
     id: 7,
     name: "Grace Huang",
-    email: "ghuang@wilsonwims.edu",
+    email: "ghuang@mcpsmd.net",
     flag: "green",
     reasons: [],
     wordCount: 258,
@@ -287,7 +287,7 @@ Then Leslie dies and it is very sad. Jess is really upset. But at the end he tak
   {
     id: 8,
     name: "Isaac Johnson",
-    email: "ijohnson@wilsonwims.edu",
+    email: "ijohnson@mcpsmd.net",
     flag: "yellow",
     reasons: [
       "Typing speed (47 WPM) is above grade norm.",
@@ -322,7 +322,7 @@ When Leslie dies crossing the creek it breaks Jess's heart. But he carries Terab
   {
     id: 9,
     name: "Jayden Kim",
-    email: "jkim@wilsonwims.edu",
+    email: "jkim@mcpsmd.net",
     flag: "green",
     reasons: [],
     wordCount: 276,
@@ -356,7 +356,7 @@ At the end Jess decides to keep Terabithia alive. He takes his sister May Belle 
   {
     id: 10,
     name: "Kira Mendoza",
-    email: "kmendoza@wilsonwims.edu",
+    email: "kmendoza@mcpsmd.net",
     flag: "red",
     reasons: [
       "Typing speed (94 WPM) is unusually fast for grade 5.",
@@ -390,7 +390,7 @@ Each teaches the other what the other most needs: Leslie offers Jess permission 
   {
     id: 11,
     name: "Liam O'Brien",
-    email: "lobrien@wilsonwims.edu",
+    email: "lobrien@mcpsmd.net",
     flag: "green",
     reasons: [],
     wordCount: 282,
@@ -421,7 +421,7 @@ Then a very sad thing happens. Leslie tries to go to Terabithia alone when it is
   {
     id: 12,
     name: "Maya Patel",
-    email: "mpatel@wilsonwims.edu",
+    email: "mpatel@mcpsmd.net",
     flag: "yellow",
     reasons: [
       "Pasted 3 passages (46, 58, and 22 characters).",
