@@ -3,7 +3,7 @@ Things to Add:
 FrontEnd:
     At very start of home page, give user the option to toggle between two styles. 1. is targeted to students k-3, other 4-5+. 
     Change student sample names: Singers? Actors?
-    Interface for teachers to customize their assinment preferences: No copy pastes at all, highlight copied content, no ai at all, etc etc. 
+    Interface for teachers to customize their assinment preferences: No copy pastes at all, highlight copied content, no ai at all, suspicion level: science assingment may allow tab outs but not english ones. 
     
 
 BackEnd:
