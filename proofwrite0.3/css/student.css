@@ -94,12 +94,8 @@
 }
 
 .side-section-title {
-  padding: 40px 32px;
-  background: var(--paper-deep);
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
   font-weight: bold;
+  font-size: 17px;
 }
 
 .flag-display {
