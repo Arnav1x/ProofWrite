@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ProofWrite &mdash; About Us</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@400;600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+  .about-page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 60px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .back-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+    text-decoration: none;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .back-link:hover { color: var(--accent); }
+
+  .about-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .about-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 18px;
+  }
+  .about-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .about-deck {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* Section headings — JetBrains Mono kicker followed by serif title,
+     mirroring the editorial language used elsewhere in the app. */
+  .about-section {
+    margin-bottom: 44px;
+  }
+  .section-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    margin-bottom: 18px;
+    line-height: 1.15;
+  }
+
+  .about-section p {
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+  }
+  .about-section p:last-child { margin-bottom: 0; }
+  .about-section p strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Pull-quote for the central thesis from the ReadMe */
+  .pull-quote {
+    margin: 36px 0;
+    padding: 24px 28px;
+    background: var(--paper-deep);
+    border-left: 3px solid var(--accent);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  /* Feature list — matches the paper-grid aesthetic of the
+     teacher dashboard's stats bar. */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 20px;
+  }
+  .feature {
+    background: var(--paper);
+    padding: 22px 22px;
+  }
+  .feature-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+    margin-bottom: 10px;
+  }
+  .feature-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .feature-body {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* Flag explainer — uses the same pill colors as the rest of app */
+  .flag-explainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .flag-explain-item {
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+    background: var(--paper);
+  }
+  .flag-explain-item.green { border-color: var(--green); }
+  .flag-explain-item.yellow { border-color: var(--yellow); }
+  .flag-explain-item.red { border-color: var(--red); }
+  .flag-explain-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .flag-explain-item.green .flag-explain-dot { background: var(--green); }
+  .flag-explain-item.yellow .flag-explain-dot { background: var(--yellow); }
+  .flag-explain-item.red .flag-explain-dot { background: var(--red); }
+  .flag-explain-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 8px;
+  }
+  .flag-explain-item.green .flag-explain-name { color: var(--green); }
+  .flag-explain-item.yellow .flag-explain-name { color: var(--yellow); }
+  .flag-explain-item.red .flag-explain-name { color: var(--red); }
+  .flag-explain-body {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  /* Closing CTA — drives back to the demos */
+  .closing-cta {
+    margin-top: 56px;
+    padding: 32px 32px;
+    border: 2px solid var(--ink);
+    background: var(--paper-deep);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .closing-cta-text {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .closing-cta-text strong { font-weight: 600; }
+  .closing-cta-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  @media (max-width: 800px) {
+    .about-page { padding: 32px 24px 60px; }
+    .about-title { font-size: 40px; }
+    .about-deck { font-size: 17px; margin-bottom: 36px; padding-bottom: 24px; }
+    .section-title { font-size: 24px; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .flag-explainer { grid-template-columns: 1fr; }
+    .closing-cta { grid-template-columns: 1fr; }
+    .closing-cta-buttons { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="index.html" class="brand">
+    <span class="mark"></span>
+    ProofWrite
+    <span class="sub">Demo / v0.3</span>
+  </a>
+  <nav class="masthead-nav">
+    <a href="student.html">Student View</a>
+    <a href="teacher.html">Teacher View</a>
+    <a href="about.html" class="active">About Us</a>
+  </nav>
+  <div class="masthead-meta">
+    Pilot Release &nbsp;&middot;&nbsp; <strong>K&ndash;5 Schools</strong>
+  </div>
+</header>
+
+<main class="about-page">
+
+  <a href="index.html" class="back-link">&larr; Back to Home</a>
+
+  <div class="about-eyebrow">About ProofWrite &middot; Our Mission</div>
+
+  <h1 class="about-title">
+    The Pro-Honesty, <em>Anti-AI</em> Homework Tool.
+  </h1>
+
+  <p class="about-deck">
+    A writing platform built to protect the developmental work
+    that classrooms are meant to do &mdash; for the first generation
+    of students growing up alongside ubiquitous AI.
+  </p>
+
+  <section class="about-section">
+    <div class="section-kicker">The Problem</div>
+    <h2 class="section-title">A generation raised to outsource thinking.</h2>
+    <p>
+      In recent years, AI has become incredibly efficient &mdash; capable of doing work
+      that once took hours or days in a matter of seconds. While revolutionary in
+      certain areas, in the field of education it raises troubling concerns. As
+      teachers are well aware, AI poses a serious academic integrity problem.
+    </p>
+    <p>
+      For university-aged students, this is concerning but manageable. But what
+      about children in <strong>K&ndash;5?</strong> Older students had the benefit of being
+      raised in an environment where answers were rewarded through learning,
+      thinking, and reasoning. How different would they be if those steps were
+      skipped altogether?
+    </p>
+    <p>
+      AI is an amazing tool, especially for learning new and confusing concepts.
+      But when students offload all of their thinking into AI, they miss out on
+      a core developmental process. These kids are in the most neuroplastic
+      times of their lives.
+    </p>
+
+    <div class="pull-quote">
+      For the first time ever, a generation of students is being born into a
+      world of ubiquitous AI. A child as young as five can ask a chatbot to
+      complete their arithmetic homework. If they know how to open a website
+      and take a picture &mdash; that's the total amount of thinking and reasoning
+      required for any of their homework.
+    </div>
+
+    <p>
+      Their brains should be taught to welcome challenge, not to offload all
+      cognitive adversity to a device that does the thinking for them.
+      <strong>ProofWrite aims to solve this dilemma.</strong>
+    </p>
+  </section>
+
+  <section class="about-section">
+    <div class="section-kicker">What We Are</div>
+    <h2 class="section-title">A homework platform for honesty between students and teachers.</h2>
+    <p>
+      Many of the key learning experiences that prepare children for the future
+      happen outside the classroom. ProofWrite is a homework platform aimed at
+      promoting honesty in that out-of-classroom work.
+    </p>
+    <p>
+      The platform looks similar to classic text editors like Word and Docs &mdash;
+      but it has teachers' interests in mind. Instead of the typical model where
+      teachers assign work, the student completes it on the software of their
+      choice, exports, and submits it to a platform like Canvas, ProofWrite
+      keeps every step internal. The assignment is <strong>posted, written, submitted,
+      and graded all in one place.</strong>
+    </p>
+  </section>
+
+  <section class="about-section">
+    <div class="section-kicker">Key Features</div>
+    <h2 class="section-title">What sets ProofWrite apart.</h2>
+    <p>
+      When a student begins typing, the platform records what is written, at
+      what speed, the gaps between sentences, and every revision. This data is
+      reconstructed into a replayable video of the student's writing session &mdash;
+      with speed controls, so teachers can review whether an essay was genuinely
+      written or simply pasted in.
+    </p>
+
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="feature-label">Feature 01</div>
+        <div class="feature-title">Writing Session Replay</div>
+        <div class="feature-body">
+          Watch any submission play back word-by-word at the speed it was
+          written, with the option to scrub or speed up. Pastes are visually
+          marked so they're impossible to miss.
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Feature 02</div>
+        <div class="feature-title">Configurable Paste Blocking</div>
+        <div class="feature-body">
+          Teachers can disable copy-and-paste entirely &mdash; with a smart
+          exception for content prefaced by quotes or parentheses, so legitimate
+          citations still work.
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Feature 03</div>
+        <div class="feature-title">Session Metrics</div>
+        <div class="feature-body">
+          Active time, words-per-minute, tab switches, and pastes &mdash; tracked
+          per submission, with thresholds the teacher sets. Science work can
+          allow research tab-outs; book reports cannot.
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-label">Feature 04</div>
+        <div class="feature-title">Teacher Autonomy</div>
+        <div class="feature-body">
+          Every flag and threshold is adjustable per assignment. ProofWrite
+          surfaces signal &mdash; teachers decide what it means.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="section-kicker">Our Approach</div>
+    <h2 class="section-title">Color-coded flags, not confidence percentages.</h2>
+    <p>
+      When a student gets flagged, we avoid measurements like percentages.
+      Instead of displaying <em>"this student had a 95% likelihood of academic
+      dishonesty,"</em> we use a simple color-coded report:
+    </p>
+
+    <div class="flag-explainer">
+      <div class="flag-explain-item green">
+        <div class="flag-explain-name"><span class="flag-explain-dot"></span>Green</div>
+        <div class="flag-explain-body">
+          Nothing out of the ordinary detected. The writing pattern looks
+          authentic.
+        </div>
+      </div>
+      <div class="flag-explain-item yellow">
+        <div class="flag-explain-name"><span class="flag-explain-dot"></span>Yellow</div>
+        <div class="flag-explain-body">
+          Something questionable was found. Worth a closer look, but not
+          conclusive.
+        </div>
+      </div>
+      <div class="flag-explain-item red">
+        <div class="flag-explain-name"><span class="flag-explain-dot"></span>Red</div>
+        <div class="flag-explain-body">
+          High likelihood of dishonesty. Replay and metadata available for
+          teacher review.
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 22px;">
+      From there, teachers can run diagnostics on each flagged assignment &mdash;
+      exporting the replay video and metadata. <strong>AI detectors are famously
+      unreliable, and not every flag means cheating occurred.</strong> We want teachers
+      to be able to view submissions holistically before making any judgement.
+    </p>
+  </section>
+
+  <div class="closing-cta">
+    <div class="closing-cta-text">
+      <strong>Ready to see it in action?</strong><br>
+      Try the live demo from either side of the classroom.
+    </div>
+    <div class="closing-cta-buttons">
+      <a href="student.html" class="btn btn-ghost">Student View</a>
+      <a href="teacher.html" class="btn">Teacher View</a>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>

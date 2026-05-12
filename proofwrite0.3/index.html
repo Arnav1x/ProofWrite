@@ -37,18 +37,93 @@
     margin-bottom: 20px;
   }
 
+  /* Title row — title on the left, About Us card on the right.
+     The flex container lets the title and the About card sit at
+     the same vertical level, with the About card visually anchored
+     to the right edge of the hero column. */
+  .hero-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 24px;
+  }
+
   .hero-title {
     font-family: 'Fraunces', serif;
     font-weight: 600;
     font-size: 64px;
     line-height: 1.05;
     letter-spacing: -0.03em;
-    margin-bottom: 24px;
-    max-width: 900px;
+    margin-bottom: 0;
+    flex: 1;
   }
   .hero-title em {
     font-style: italic;
     color: var(--accent);
+  }
+
+  /* About Us — accent-bordered card next to the title.
+     Smaller than the two demo cards below so it doesn't pull
+     attention away from them, but uses the brick-red accent
+     color to be unmistakably interactive. */
+  .about-card {
+    flex-shrink: 0;
+    display: block;
+    text-decoration: none;
+    color: var(--accent);
+    background: var(--paper);
+    border: 2px solid var(--accent);
+    padding: 18px 22px 16px;
+    width: 240px;
+    transition: transform 160ms ease, box-shadow 160ms ease,
+                background 160ms ease, color 160ms ease;
+  }
+  .about-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--accent);
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .about-card:active {
+    transform: translate(0, 0);
+    box-shadow: 0 0 0 var(--accent);
+  }
+
+  .about-card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+    margin-bottom: 8px;
+    transition: color 160ms ease, opacity 160ms ease;
+  }
+  .about-card:hover .about-card-tag { color: var(--paper); opacity: 0.8; }
+
+  .about-card-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .about-card-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .about-card-cta .arrow {
+    transition: transform 160ms ease;
+  }
+  .about-card:hover .about-card-cta .arrow {
+    transform: translateX(4px);
   }
 
   .hero-lede {
@@ -174,7 +249,14 @@
 
   @media (max-width: 800px) {
     .hero { padding: 48px 28px 28px; }
+    .hero-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
     .hero-title { font-size: 42px; }
+    .about-card { width: 100%; }
     .hero-lede { font-size: 17px; margin-bottom: 36px; }
     .demo-choices { grid-template-columns: 1fr; gap: 16px; }
     .demo-card { padding: 28px 24px 24px; }
@@ -196,6 +278,7 @@
   <nav class="masthead-nav">
     <a href="student.html">Student View</a>
     <a href="teacher.html">Teacher View</a>
+    <a href="about.html">About Us</a>
   </nav>
   <div class="masthead-meta">
     Pilot Release &nbsp;&middot;&nbsp; <strong>K&ndash;5 Schools</strong>
@@ -207,9 +290,21 @@
   <section class="hero">
     <div class="eyebrow">Pro-Honesty Homework
 .</div>
-    <h1 class="hero-title">
-      ProofWrite demo
-    </h1>
+
+    <div class="hero-header">
+      <h1 class="hero-title">
+        ProofWrite demo
+      </h1>
+
+      <a class="about-card" href="about.html">
+        <div class="about-card-tag">Our Mission</div>
+        <div class="about-card-title">About Us</div>
+        <div class="about-card-cta">
+          Read more <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+    </div>
+
     <p class="hero-lede">
       A writing platform for teachers to promote honesty in students 
     </p>
@@ -250,7 +345,7 @@
       <div>
         <div class="context-item-label">Who it's for</div>
         <div class="context-item-body">
-          Elementary schools and their teachers \u2014 the age where critical-thinking habits are still being formed, and where AI use is most distorting..
+          Elementary schools and their teachers &mdash; the age where critical-thinking habits are still being formed, and where AI use is most distorting.
         </div>
       </div>
       <div>
